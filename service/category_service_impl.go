@@ -87,7 +87,7 @@ func (service *categoryServiceImpl) Delete(ctx context.Context, categoryId int) 
 	helper.PanicError(err)
 	defer helper.CommiteOrRollback(tx)
 
-	category, err := service.CategoryRepository.FindById(ctx, tx, request.Id)
+	category, err := service.CategoryRepository.FindById(ctx, tx, categoryId)
 	if err != nil {
 		panic(exception.NewNotFoundError(err.Error()))
 	}
